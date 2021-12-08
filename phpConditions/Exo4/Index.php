@@ -29,7 +29,9 @@ case 8 :
 case 9 :
     echo "Séisme capable de tout détruire sur une très vaste zone";
     break;
-default;
+default:
+ echo "veuillez saisir un chiffre entre 1 et 9";
+    break;
 }
 ?>
 

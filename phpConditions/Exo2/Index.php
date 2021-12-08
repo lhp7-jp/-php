@@ -6,6 +6,10 @@ if ($isEasy) {
     echo "C'est difficile!!!";
   }
 
+// méthode avec ternaire
+
+echo $isEasy ? "c'est vrai" : "c'est faux";
+
 ?>
 
 <!DOCTYPE html>

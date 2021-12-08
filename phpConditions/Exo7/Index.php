@@ -1,10 +1,10 @@
 <?php 
-$var_b = '';
+$var_b = "je suis une variable qui a une valeur";
 
-if (empty($var_b)) {
-  echo "je suis une variable sans valeur";
+if (isset($var_b)) {
+  echo $var_b;
  } else {
-    echo "je suis une variable qui a une valeur";
+    echo "je suis une variable sans valeur";
   }
 ?>
 
