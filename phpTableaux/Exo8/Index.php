@@ -1,15 +1,4 @@
-<?php 
-$number = 11;
-if ($number%3 == 0 && $number%5 ==0) {
-  echo "FizzBuzz";
- } elseif (($number%3) == 0) {
-    echo "Fizz";
-  } elseif (($number%5) == 0) {
-    echo "Buzz";
-  } else {
-    echo $number;
-  }
-?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,7 +12,13 @@ if ($number%3 == 0 && $number%5 ==0) {
 
 
 <body>
-  
+<?php 
+$months = array("1" => "janvier","février", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre" , "novembre", "décembre");
+
+foreach ($months as $key => $value) {
+  echo " le mois $key est : $value, ";
+}
+?>
 </body>
 </html>
 
