@@ -1,20 +1,19 @@
 <?php
-
-function getParamUrl()
-{  // test si formulaire soumis
-  if (!empty($_GET["lastname"]) && !empty($_GET["firstname"])) {
-    $paramUrl1 = $_GET["lastname"];
-    $paramUrl2 = $_GET["firstname"];
+function getParamUrl(){
+if (isset($_GET['lastname']) && isset($_GET['firstname'])) {
+   if (isset($_GET['age'])) {
+    $paramUrl1 = $_GET['lastname'];
+    $paramUrl2 = $_GET['firstname'];
+    $paramUrl3 = $_GET['age'];
     echo '<p class="text-center">'.$paramUrl1.'</p>';
     echo '<p class="text-center">'.$paramUrl2.'</p>';
-  } else {
-    return '';
+    echo '<p class="text-center">'.$paramUrl3.'</p>';
+    } else {
+    echo 'Le paramètre age n est pas présent ';
   }
-  // si formulaire soumis
-  if (isset($_POST['retourfirstpage'])) {
-    echo "Retour index";
-  };
- };
+};
+return '';
+};
 ?>
 
 <!DOCTYPE html>
@@ -26,22 +25,28 @@ function getParamUrl()
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <title>Exo1</title>
+  <title>Exo2</title>
 
 </head>
 
 
 <body>
-  <a href="http://phpparamurl/Exo1/index.php?lastname=Tutor&firstname=Janine">
+
+<div class="row">
+  
+  <a class="btn btn-primary col-lg-2" href="http://phpparamurl/Exo2/index.php?lastname=PARKER&firstname=Parker">
     <input type="submit" name="sendParam" value="Envoi des paramètres" />
   </a>
 
-  <a href="http://phpparamurl/Exo1/index.php">
-    <input type="submit" value="Retour Index" name="retourfirstpage" />
+  <a class="btn btn-secondary col-lg-2" href="http://phpparamurl/Exo2/index.php">
+    <input type="submit" name="retourfirstpage" value="Retour Index" />
   </a>
+</div>
 
   <p><?= getParamUrl() ?></p>
-  
+
+
+
 
   <!-- Optional JavaScript; choose one of the two! -->
 
