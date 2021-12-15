@@ -1,18 +1,15 @@
 <?php
-function collecteInfos(){
-
-if (isset($_GET['meal'])) {
-    $numMeal = $_GET['meal'];
-    $choiceMenu = $meal[$numMeal];
-    echo '<p class="text-center"> </p>';
-    echo '<p class="text-center">Votre Plat:  </p>';
-    echo '<p class="text-center">'.$choiceMenu.'</p>';
-    echo '<p class="text-center"> a bien été pris en compte.</p>';
-    echo '<p class="text-center">Nous préparons votre commande.';
-   } else {
-     echo 'vous avez oublié de choisir votre menu.';
-   }; 
-return '';
+function collecteInfos() {
+ if (isset($_GET['sendName'])) {
+     echo '<p class="text-center">Votre nom : '.$_GET['sendName'].'</p>';
+     echo '<p class="text-center">Votre prénom : '.$_GET['sendFirstname'].' </p>';
+     echo '<p class="text-center">Votre email : '.$_GET['sendEmail'].' </p>';
+     echo '<p class="text-center">Votre sujet : '.$_GET['sendSubject'].' </p>';
+     echo '<p class="text-center">Votre demande : '.$_GET['sendResquest'].' </p>';
+  } else {
+      echo 'vous avez oublié de remplir votre formulaire';
+  }
+ return '';
 };
 ?>
 
@@ -25,19 +22,21 @@ return '';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <title>Meal</title>
+  <title>Contact</title>
 
 </head>
 
 <body>
+  <div class="container-fluid lh-lg pb-5 bg-warning text-dark text-center justify-content-center"></div>
 
-   <p><?= choiceMeal() ?></p>
+  <p><?= collecteInfos() ?></p>
 
    <div class="d-flex justify-content-center">
    <a class="btn btn-primary col-lg-2" href="http://phpFormulaires/index.php">
     <input type="submit" value="Retour" name="retourfirstpage" />
    </a>
    </div>
+  </div>
   <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

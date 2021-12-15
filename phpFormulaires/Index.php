@@ -1,48 +1,5 @@
 <?php
-var_dump($_GET);
-if (isset($_GET['submitButton'])) {
-  //  récupérer les données du formulaire en utilisant 
-  //  la valeur des attributs name comme clé 
-  $name = $_GET['sendName'];
-  $firstname = $_GET['sendFirstname'];
-  $email = $_GET['sendEmail'];
-  $Subject = $_GET['sendSubject'];
-  $request = $_GET['sendRequest'];
-
-  if (isset($_GET['sendName'])) {
-    // or (empty($_GET['sendName'])) {
-    echo "Veuillez entrez votre nom, svp";
-  } else {
-    $name = $_GET['sendName'];
-  };
-  if (isset($_GET['sendFirstname'])) {
-    // or (empty($_GET['sendName'])) {
-    echo "Veuillez entrez votre prénom, svp";
-  } else {
-    $firstname = $_GET['sendFisrtname'];
-  };
-  if (isset($_GET['sendEmail'])) {
-    // or (empty($_GET['sendName'])) {
-    echo "Veuillez entrez votre email, svp";
-  } else {
-    $email = $_GET['sendEmail'];
-  };
-  if (isset($_GET['sendSubject'])) {
-    // or (empty($_GET['sendName'])) {
-    echo "Veuillez entrez votre sujet, svp";
-  } else {
-    $subject = $_GET['sendSubject'];
-  };
-  if (isset($_GET['sendRequest'])) {
-    // or (empty($_GET['sendName'])) {
-    echo "Veuillez entrez votre demande, svp";
-  } else {
-    $request = $_GET['sendRequest'];
-  };
-
-  // header('Location: infos.php');
-  var_dump($_GET);
-};
+require "./controller.php";
 ?>
 
 <!DOCTYPE html>
@@ -59,46 +16,43 @@ if (isset($_GET['submitButton'])) {
 
 
 <body>
-  <div class="container lh-lg bg-warning text-dark text-center ">
-
-    <div class="container_Prin pb-5 text-center justify-content-center">
-      <h1>Contact</h1>
+  <div class="row lh-lg pb-5 bg-warning text-dark text-center justify-content-center ">
+    <div class="lg-5 ">
+    <h1>Contact</h1>
       <h1></h1>
-
-      <div class="row text-center justify-content-center">
-        <h3>Veuillez renseigner les champs ci-dessous ,svp.</h3>
-        <h3></h3>
-      </div>
-    </div>
-
+      <h3>Veuillez renseigner les champs ci-dessous ,svp.</h3>
+      <h3></h3>
+      
     <form action="./index.php" method="get" class="text-center">
       <fieldset>
         <div>
+          <!-- je teste si input sendName est présent dans $_GET si oui je l'affiche en utilisant htmlspecialchars -->
           <label for="name">Votre nom : </label>
-          <input type="text" name="sendName" placeholder="" />
+          <input value="<?= isset($_GET['sendName']) ? htmlspecialchars($_GET["sendName"]) : ""?>" type="text" name="sendName" placeholder=""/>
         </div>
         <div>
           <label for="firstname">Votre prénom : </label>
-          <input type="text" name="sendFirstname" placeholder="" /><br />
+          <input value="<?= isset($_GET['sendFirstname']) ? htmlspecialchars($_GET["sendFirstname"]) : ""?>" type="text" name="sendFirstname" placeholder=""/><br />
         </div>
         <div>
           <label for="email">Votre email : </label>
-          <input type="text" name="sendEmail" placeholder="" /><br />
+          <input value="<?= isset($_GET['sendEmail']) ? htmlspecialchars($_GET["sendEmail"]) : ""?>" type="text" name="sendEmail" placeholder=""/><br />
         </div>
-
-        <label for="selectSujet">Sujet</label>
-        <button class="m-2 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Select :
-        </button>
-        <ul name="sendSubject" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item">+ infos</a></li>
-          <li><a class="dropdown-item">+ Prix</a></li>
-          <li><a class="dropdown-item">+ autres</a></li>
-        </ul>
+        <div class="col-2 text-center justify-content-center">
+        <label for="selectSujet">Sujet : </label>
+        <select class="form-control" name="sendSubject">
+          <option value=""></option>
+		      <option value="Infos">Infos</option>
+		      <option value="Prix">Prix</option>
+		      <option value="Autres">Autres</option>
+		    </select>
+        </div>
         <h1></h1>
+        <div class="col-6 text-center justify-content-center">
         <label for="floatingTextarea2">Veuillez décrire votre demande</label>
         <textarea name="sendRequest" class="form-control" placeholder="" style="height: 100px"></textarea>
         <h1></h1>
+        </div>
         <input type="submit" value="Envoyer" name="submitButton" />
       </fieldset>
     </form>
