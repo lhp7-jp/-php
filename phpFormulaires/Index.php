@@ -1,9 +1,48 @@
 <?php
 var_dump($_GET);
 if (isset($_GET['submitButton'])) {
+  //  récupérer les données du formulaire en utilisant 
+  //  la valeur des attributs name comme clé 
+  $name = $_GET['sendName'];
+  $firstname = $_GET['sendFirstname'];
+  $email = $_GET['sendEmail'];
+  $Subject = $_GET['sendSubject'];
+  $request = $_GET['sendRequest'];
+
+  if (isset($_GET['sendName'])) {
+    // or (empty($_GET['sendName'])) {
+    echo "Veuillez entrez votre nom, svp";
+  } else {
+    $name = $_GET['sendName'];
+  };
+  if (isset($_GET['sendFirstname'])) {
+    // or (empty($_GET['sendName'])) {
+    echo "Veuillez entrez votre prénom, svp";
+  } else {
+    $firstname = $_GET['sendFisrtname'];
+  };
+  if (isset($_GET['sendEmail'])) {
+    // or (empty($_GET['sendName'])) {
+    echo "Veuillez entrez votre email, svp";
+  } else {
+    $email = $_GET['sendEmail'];
+  };
+  if (isset($_GET['sendSubject'])) {
+    // or (empty($_GET['sendName'])) {
+    echo "Veuillez entrez votre sujet, svp";
+  } else {
+    $subject = $_GET['sendSubject'];
+  };
+  if (isset($_GET['sendRequest'])) {
+    // or (empty($_GET['sendName'])) {
+    echo "Veuillez entrez votre demande, svp";
+  } else {
+    $request = $_GET['sendRequest'];
+  };
+
   // header('Location: infos.php');
   var_dump($_GET);
-}
+};
 ?>
 
 <!DOCTYPE html>
@@ -32,37 +71,36 @@ if (isset($_GET['submitButton'])) {
       </div>
     </div>
 
-    <form action="index.php" method="get" class="text-center">
+    <form action="./index.php" method="get" class="text-center">
       <fieldset>
         <div>
           <label for="name">Votre nom : </label>
-          <input type="text" name="sendName" id="name" value="Ex: Durand" />
+          <input type="text" name="sendName" placeholder="" />
         </div>
         <div>
           <label for="firstname">Votre prénom : </label>
-          <input type="text" name="sendFirstname" value="Ex: Jean-Marc" /><br />
+          <input type="text" name="sendFirstname" placeholder="" /><br />
         </div>
         <div>
           <label for="email">Votre email : </label>
-          <input type="text" name="sendMail" value="Ex: jean-marc.durand@gmail.com" /><br />
+          <input type="text" name="sendEmail" placeholder="" /><br />
         </div>
 
         <label for="selectSujet">Sujet</label>
-        <button value="Sujet" class="m-2 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="m-2 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           Select :
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">+ infos</a></li>
-          <li><a class="dropdown-item" href="#">+ Prix</a></li>
-          <li><a class="dropdown-item" href="#">+ autres</a></li>
+        <ul name="sendSubject" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item">+ infos</a></li>
+          <li><a class="dropdown-item">+ Prix</a></li>
+          <li><a class="dropdown-item">+ autres</a></li>
         </ul>
+        <h1></h1>
+        <label for="floatingTextarea2">Veuillez décrire votre demande</label>
+        <textarea name="sendRequest" class="form-control" placeholder="" style="height: 100px"></textarea>
+        <h1></h1>
+        <input type="submit" value="Envoyer" name="submitButton" />
       </fieldset>
-    </form>
-
-    <label for="floatingTextarea2">Veuillez décrire votre demande</label>
-    <textarea class="form-control" placeholder="Veuillez décrire votre demande" id="floatingTextarea2" style="height: 100px"></textarea>
-    <h1></h1>
-    <input type="submit" value="Envoyer" name="submitButton" />
     </form>
   </div>
 

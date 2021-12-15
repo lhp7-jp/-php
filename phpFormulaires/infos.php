@@ -34,7 +34,7 @@ return '';
    <p><?= choiceMeal() ?></p>
 
    <div class="d-flex justify-content-center">
-   <a class="btn btn-primary col-lg-2" href="http://projetResto/index.php">
+   <a class="btn btn-primary col-lg-2" href="http://phpFormulaires/index.php">
     <input type="submit" value="Retour" name="retourfirstpage" />
    </a>
    </div>
