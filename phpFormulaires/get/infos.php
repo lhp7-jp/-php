@@ -1,4 +1,10 @@
 <?php
+//
+if (isset($_GET['sendName'],$_GET['sendFirstname'],$_GET['sendEmail'],$_GET['sendSubject'],$_GET['sendResquest'])) {
+  header("Location: ./index.php");
+  exit;
+};
+
 function collecteInfos() {
  if (isset($_GET['sendName'])) {
      echo '<p class="text-center">Votre nom : '.$_GET['sendName'].'</p>';
@@ -27,7 +33,7 @@ function collecteInfos() {
 </head>
 
 <body>
-  <div class="container-fluid lh-lg pb-5 bg-warning text-dark text-center justify-content-center"></div>
+  <div class="row col-lg-2 pb-5 bg-warning text-dark text-center justify-content-center"></div>
 
   <p><?= collecteInfos() ?></p>
 

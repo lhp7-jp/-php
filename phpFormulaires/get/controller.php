@@ -1,9 +1,18 @@
 <?php
+
 $regexName = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,100}$/u";
+$regexDemande = "/^.{1,200}$/u";
 
 // tableau des erreurs (vide au départ) que l'on remplit avec les erreurs 
 // et que l'on vérifie à la fin pour voir s'il est vide pour aller la page infos.php
 $msgErrors = [];
+// tableau liste des sujets
+$choiceSubject = [
+  1 => "Information",
+  7 => "Prix",
+  3 => "Autre"
+];
+
 
 // nous vérifions si l'input submitButton est présent dans $_GET
 if (isset($_GET['submitButton'])) {
@@ -46,19 +55,21 @@ if (isset($_GET['submitButton'])) {
     echo $msgErrors["sendEmail"];
    }
   };
+
+
+
   if (!isset($_GET['sendSubject']) or empty($_GET['sendSubject'])) {
-    $msgErrors["sendSubject"]="Veuillez entrez votre sujet, svp";
+    // nous controlons que la clé existe $_GET, si elle n'existe pas nous envoyons un message d'erreur
+    if (!array_key_exists($_GET["sujet"],$choiceSubject)) {
+    $msgErrors["sendSubject"]="Veuillez entrez un sujet valide";
     echo $msgErrors["sendSubject"];
   } else {
-  if (!preg_match($regexName, $_GET['sendSubject']))  {
-  $msgErrors["sendSubject"]="le format de votre sujet n'est pas valide ex: Autres";
-  echo $msgErrors["sendSubject"];
-} else {
-  $subject = htmlspecialchars($_GET['sendSubject']);
-  var_dump($sendSubject);
- }
-};
+    $msgErrors["sendSubject"]="Veuillez entrez votre sujet, svp";
+    echo $msgErrors["sendSubject"];
+    }
+  };
 
+  
 if (!isset($_GET['sendRequest']) or empty($_GET['sendRequest'])) {
     $msgErrors["sendRequest"]="Veuillez entrez votre demande, svp";
     echo $msgErrors["sendRequest"];
@@ -67,13 +78,19 @@ if (!isset($_GET['sendRequest']) or empty($_GET['sendRequest'])) {
     $msgErrors["sendRequest"]="le format de votre demande n'est pas valide. ex: ecriture site web";
     echo $msgErrors["sendRequest"];
   } else {
-     $request = htmlspecialchars($_GET['sendRequest']);
-     var_dump($request);
+    $request = htmlspecialchars($_GET['sendRequest']);
+    var_dump($request);
   }
 }
 };
 // Je contrôle si le tableau est vide pour aller ensuite sur la page infos.php avec les variables $name+....
-if (empty($msgErrors)) {
+// if (empty($msgErrors)) {
+//   //je protège et je stocke dans $name 
+//   $name = htmlspecialchars($_GET['sendName']);
+//   $firstname = htmlspecialchars($_GET['sendFirstname']);
+//   $email = htmlspecialchars($_GET['sendEmail']);
+//   $subject = htmlspecialchars($_GET['sendSubject']);
+//   $request = htmlspecialchars($_GET['sendRequest']);
+// };
 // header("Location: ./infos.php?sendName=$name.&sendFirstname=$firstName&sendEmail=$email&sendSubject=$subject&sendResquest=$request");
-};
 ?>

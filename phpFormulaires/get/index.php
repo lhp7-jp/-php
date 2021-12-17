@@ -16,9 +16,8 @@ require "./controller.php";
 
 
 <body>
-  <div class="row lh-lg pb-5 bg-warning text-dark text-center justify-content-center ">
-    <div class="lg-5 ">
-    <h1>Contact</h1>
+  <div class="row pb-5 bg-warning text-dark text-center justify-content-center ">
+      <h1>Contact</h1>
       <h1></h1>
       <h3>Veuillez renseigner les champs ci-dessous ,svp.</h3>
       <h3></h3>
@@ -38,14 +37,14 @@ require "./controller.php";
           <label for="email">Votre email : </label>
           <input value="<?= isset($_GET['sendEmail']) ? htmlspecialchars($_GET["sendEmail"]) : ""?>" type="text" name="sendEmail" placeholder=""/><br />
         </div>
-        <div class="col-2 text-center justify-content-center">
-        <label for="selectSujet">Sujet : </label>
-        <select class="form-control" name="sendSubject">
-          <option value=""></option>
-		      <option value="Infos">Infos</option>
-		      <option value="Prix">Prix</option>
-		      <option value="Autres">Autres</option>
-		    </select>
+        <div class="col-lg-2 pb-5 text-center justify-content-center">
+        <label for="Sujet">Sujet : </label>
+         <select class="form-control" name="sendSubject" aria-label="permet de choisir son sujet">
+          <option selected disabled>--Menu--</option>
+		       <?php foreach ($choiceSubject as $toto => $tata)  { ?>
+           <option value="<?= $toto ?>" <?= isset($_GET["Sujet"]) && $_GET["Sujet"] == $toto ? "selected" : "" ?>><?= $tata ?></option>
+          <?php } ?>
+		    </select> 
         </div>
         <h1></h1>
         <div class="col-6 text-center justify-content-center">
