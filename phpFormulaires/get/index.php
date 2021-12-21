@@ -1,71 +1,88 @@
 <?php
-require "./controller.php";
+require "controller.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <title>Contacts</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+
+    <title>Formulaire</title>
 </head>
 
-
 <body>
-  <div class="row pb-5 bg-warning text-dark text-center justify-content-center ">
-      <h1>Contact</h1>
-      <h1></h1>
-      <h3>Veuillez renseigner les champs ci-dessous ,svp.</h3>
-      <h3></h3>
-      
-    <form action="./index.php" method="get" class="text-center">
-      <fieldset>
-        <div>
-          <!-- je teste si input sendName est présent dans $_GET si oui je l'affiche en utilisant htmlspecialchars -->
-          <label for="name">Votre nom : </label>
-          <input value="<?= isset($_GET['sendName']) ? htmlspecialchars($_GET["sendName"]) : ""?>" type="text" name="sendName" placeholder=""/>
-        </div>
-        <div>
-          <label for="firstname">Votre prénom : </label>
-          <input value="<?= isset($_GET['sendFirstname']) ? htmlspecialchars($_GET["sendFirstname"]) : ""?>" type="text" name="sendFirstname" placeholder=""/><br />
-        </div>
-        <div>
-          <label for="email">Votre email : </label>
-          <input value="<?= isset($_GET['sendEmail']) ? htmlspecialchars($_GET["sendEmail"]) : ""?>" type="text" name="sendEmail" placeholder=""/><br />
-        </div>
-        <div class="col-lg-2 pb-5 text-center justify-content-center">
-        <label for="Sujet">Sujet : </label>
-         <select class="form-control" name="sendSubject" aria-label="permet de choisir son sujet">
-          <option selected disabled>--Menu--</option>
-		       <?php foreach ($choiceSubject as $toto => $tata)  { ?>
-           <option value="<?= $toto ?>" <?= isset($_GET["Sujet"]) && $_GET["Sujet"] == $toto ? "selected" : "" ?>><?= $tata ?></option>
-          <?php } ?>
-		    </select> 
-        </div>
-        <h1></h1>
-        <div class="col-6 text-center justify-content-center">
-        <label for="floatingTextarea2">Veuillez décrire votre demande</label>
-        <textarea name="sendRequest" class="form-control" placeholder="" style="height: 100px"></textarea>
-        <h1></h1>
-        </div>
-        <input type="submit" value="Envoyer" name="submitButton" />
-      </fieldset>
-    </form>
-  </div>
+    <div class="row justify-content-center">
+        <div class=" col-lg-4 mt-5">
+            <h1 class="text-center">Contact</h1>
+            <form class="mt-3" action="index.php" method="get" novalidate>
+                <!-- nom -->
+                <div class="m-1">
+                    <label for="nom"> Nom :</label><span class="text-danger">
+                        <!-- je verifie la clef nom dans mon tableau arrayErrors si oui je l'affiche -->
+                        <?= $arrayErrors["nom"] ?? "" ?>
+                    </span>
+                    <div>
+                        <!-- "><script>alert("boom")</script><img class=" -->
+                        <!-- je test si input nom est present dans $_GET si oui je l'affiche en utilisant htmlspecialchars sinon je n'affiche rien -->
+                        <input value="<?= isset($_GET["nom"]) ? htmlspecialchars($_GET["nom"]) : "" ?>" type="text" id="nom" name="nom" required>
+                    </div>
+                </div>
 
-  <!-- Optional JavaScript; choose one of the two! -->
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+                <!-- prenom -->
+                <div class="m-1">
+                    <label for="prenom"> prenom :</label><span class="text-danger">
+                        <?= $arrayErrors["prenom"] ?? "" ?>
+                    </span>
+                    <div>
+                        <input value="<?= isset($_GET["prenom"]) ? htmlspecialchars($_GET["prenom"]) : "" ?>" type="text" id="prenom" name="prenom" required>
+                    </div>
+                </div>
 
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+                <!-- mail -->
+                <div class="m-1">
+                    <label for="mail"> mail :</label><span class="text-danger">
+                        <?= $arrayErrors["mail"] ?? "" ?>
+                    </span>
+                    <div>
+                        <input value="<?= isset($_GET["mail"]) ? htmlspecialchars($_GET["mail"]) : "" ?>" type="text" id="mail" name="mail" required />
+                    </div>
+                </div>
+
+                <!-- selection -->
+                <div class="m-1">
+                    <label for="sujet"> Sujet : </label><span class="text-danger">
+                        <?= $arrayErrors["sujet"] ?? "" ?>
+                    </span>
+                    <select id="sujet" class="form-select" name="sujet" aria-label="permet de choisir son sujet">
+                        <option selected disabled>--Menu--</option>
+                        <?php foreach ($arraySubjects as $toto => $tata) { ?>
+                            <option value="<?= $toto ?>" <?= isset($_GET["sujet"]) && $_GET["sujet"] == $toto ? "selected" : "" ?>><?= $tata ?></option>
+                        <?php } ?>
+
+                    </select>
+                </div>
+
+
+                <div class="m-1">
+                    <label for="mail"> Votre demande :</label><span class="text-danger">
+                        <?= $arrayErrors["demande"] ?? "" ?>
+                    </span>
+                    <textarea value="<?= isset($_GET["demande"]) ? htmlspecialchars($_GET["demande"]) : "" ?>" href="demande" name="demande" id="demande" class="form-control" aria-label="With textarea"></textarea>
+                </div>
+
+
+                <input type="submit" value="Envoyer" name="submit" class="btn btn-outline-secondary ">
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

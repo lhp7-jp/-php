@@ -1,0 +1,9 @@
+html {
+    background-color: #00539F;
+    text-align: center;
+    width: auto;
+    max-height: 80%;
+    margin: 5em;
+    padding: 5em 5em 5em 5em;
+    border: 0.5em solid black;
+}
