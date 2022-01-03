@@ -33,7 +33,7 @@ th, td {
 </style>
 
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <h1></h1>
     <!-- // Création de la liste avec les mois du tableau myMonth et présélection de l'année choisie avec myYear -->
     <form action="index.php" method="post">
@@ -50,9 +50,7 @@ th, td {
         for ($myYear = $yearMin; $myYear <= $yearMax; $myYear++) {
           printf('<option value="%u">%s</option>', $myYear, $myYear);
         } ?>
-        <div>
         <span><input name="submitButton" type="submit" value="Envoyer" /> </span>
-        </div>
     </form>
   </div>  
   <?php
@@ -72,6 +70,7 @@ th, td {
           <th scope="col">Samedi</td>
           <th scope="col">Dimanche</td>
         </tr>
+        <tr>
         <?php
         $count = 0;
 
@@ -92,6 +91,7 @@ th, td {
         for ($count; $count < 7; $count++) { ?>
             <td class="border "></td>
           <?php } ?>
+        </tr>
       </table>
     </div>
   <?php }; ?>

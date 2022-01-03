@@ -7,8 +7,13 @@ body {
     color: whitesmoke;
     position: relative;
    }
+.p{
+    background-color: #babd16;
+    text-align: center;   
+
+}
 input {
     display: block;
     margin: .4rem 0;
-    text-align: center;
+    text-align: center
 }
