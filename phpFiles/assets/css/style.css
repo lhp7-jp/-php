@@ -7,10 +7,10 @@ body {
     color: whitesmoke;
     position: relative;
    }
-p{
+.myP {
     background-color: #babd16;
-    text-align: center;   
-
+    text-align: center;  
+    margin: 0 auto;
 }
 input {
     display: block;
