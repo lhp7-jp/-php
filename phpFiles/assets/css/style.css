@@ -7,7 +7,7 @@ body {
     color: whitesmoke;
     position: relative;
    }
-.p{
+p{
     background-color: #babd16;
     text-align: center;   
 
@@ -16,4 +16,9 @@ input {
     display: block;
     margin: .4rem 0;
     text-align: center
+}
+#imgPreview {
+	width: 200px; 
+	max-height: 200px;
+	display: block;
 }

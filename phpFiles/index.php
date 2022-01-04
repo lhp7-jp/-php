@@ -6,6 +6,9 @@ $numErros = [
 ];
 // var_dump(mime_content_type("C:/Users/jp196/Documents/#Formation La Manu Le Havre/#PHP/phpFiles/assets/img/image01.jpg") . "\n");
 var_dump($_FILES);
+$pathPictures = "C:/Users/jp196/Documents/#Formation La Manu Le Havre/#PHP/phpFiles/assets/img/";
+//  5MB
+$myMaxSizeImg = 5 * 1024 * 1024; 
 
 ?>
 
@@ -30,25 +33,16 @@ var_dump($_FILES);
       <div>
         <!-- Le type d'encodage des données, enctype, DOIT être spécifié comme ce qui suit -->
         <form enctype="multipart/form-data" action="" method="post" class="">
-          Veuillez choisir votre image : <input name="fileToUpload" id="fileToUpload" type="file" />
-          <input type="submit" value="Upload" />
+          Veuillez choisir votre image : 
           <img id="imgPreview">
+          <input name="fileToUpload" id="fileToUpload" type="file" />
+          <input type="submit" value="Upload" " />
         </form>
-        <!-- <img class="" src="./assets/img/image01.jpg" alt="image serveur"> -->
       </div>
     </div>
   </div>
 <!-- <if(!preg_match('/\.(jpg|gif|png)$/',$_FILES['fichier']['name'])) unset($_FILES['fichier']) ; -->
-<script>
-    fileToUpload.addEventListener("change", function() {
-      let input = this;
-      let oFReader = new FileReader(); // on créé un nouvel objet FileReader
-      oFReader.readAsDataURL(this.files[0]);
-      oFReader.onload = function(oFREvent) {
-        imgPreview.setAttribute('src', oFREvent.target.result);
-      };
-    })
-  </script>
+<script type="text/javascript" src="./assets/js/uploadPreview.js"></script>
 </body>
 
 </html>

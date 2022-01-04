@@ -2,7 +2,7 @@
 _________________________________________________________________________________________________________________________
 
 -------------------------------------------------------------------------------------------------------------------------
-Il faut créer au préalable un élément de type <img id="preview"> dans votre code html.
+Il faut créer au préalable un élément de type <img id="imgPreview"> dans votre code html.
 Celui-ci vous permettra d'afficher l'aperçu de l'image.
 Vous allez pouvoir modifier les dimensions de l'aperçu via un css respectif : "uploadPreview.css" fourni dans le dossier.
 
