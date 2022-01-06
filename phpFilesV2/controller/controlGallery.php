@@ -1,5 +1,5 @@
 <?php
-if (empty($_COOKIE['myLogin'])) {
+if (empty($_COOKIE['myLogin'])) { 
   setcookie('myLogin','',time()-3600);
   setcookie('myPassword','',time()-3600);
   header("Location: no-allowed.php");

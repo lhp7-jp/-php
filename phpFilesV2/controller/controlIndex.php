@@ -8,6 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         setcookie('myPassword', $password);
         header("Location: my-config.php");
     } else {
+        setcookie('myLogin',' ');
+        setcookie('myPassword',' ');
         echo "le login ou/et le password n'est pas renseigné.";
     }
 }

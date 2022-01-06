@@ -14,8 +14,8 @@ if (empty($_COOKIE['myLogin'])) {
 } else {
   setcookie('myQuota', $profiles[$_COOKIE['myLogin']]['quota']);
   setcookie('myFormule', $profiles[$_COOKIE['myLogin']]['formule']);
+  header("Location: dashboard.php");
 }
-header("Location: dashboard.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
