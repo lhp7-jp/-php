@@ -1,0 +1,24 @@
+body {
+    background-color: #092c4d;
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+    color: whitesmoke;
+  }
+form {
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+button {
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+td {
+    width: 200px; 
+	max-height: 200px;
+	display: block;
+}
+

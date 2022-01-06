@@ -3,32 +3,39 @@
 $msgErrors = [
   'notupload' => "Votre fichier n'a pas été uploadé. ", 'type' => "Votre fichier n'est pas une image. (mime) ",
   'type1' => "Votre fichier n'est pas une image. (ext) ", 'size' => "Désolé, votre fichier doit faire moins de 5mo. ",
-  'existe' => "Désolé, le fichier existe déjà."
+  'Existe' => "Désolé, le fichier existe déjà."
 ];
+$nberror = 0;
+
 // taille max du fichier à uploader
 $myMaxSizeImg = 5 * 1024 * 1024;
 // extension autorisée
 $validExtImg = array('jpg', 'png', 'webp');
+$fullValidExtImg = array('image/jpg', 'image/png', 'image/webp');
 // chemin ou se trouve les fichiers à télécharger
 $pathImg = "C:/Users/jp196/Documents/#Formation La Manu Le Havre/#PHP/phpFiles/assets/img/";
 
 if (!empty($_POST['submitButton']) && $_FILES['fileToUpload']['error'] == 0) {
-  // Vérifie la taille du fichier à télécharger
-  if ($_FILES['fileToUpload']['size'] > $myMaxSizeImg) {
-    echo $msgErrors['size'];
-    // Vérifie la format du fichier à télécharger par mime
-  } elseif (!stristr(mime_content_type($_FILES['fileToUpload']['tmp_name']), 'image')) {
+
+  // Vérifie la format du fichier à télécharger par mime
+  if (!(in_array(mime_content_type($_FILES['fileToUpload']['tmp_name']), $fullValidExtImg))) {
     echo $msgErrors['type'];
-    // Vérifie l'extension du fichier à télécharger
+    $nberror++;
+
+  // Vérifie l'extension du fichier à télécharger
   } elseif (!(in_array(strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION)), $validExtImg))) {
     echo $msgErrors['type1'];
-  }
-  // test si le fichier existe déjà
-  if (file_exists($pathImg . $_FILES["fileToUpload"]["name"])) {
-    echo $msgErrors['existe'];
+    $nberror++;
+
+  // Vérifie la taille du fichier à télécharger
+  } elseif ($_FILES['fileToUpload']['size'] > $myMaxSizeImg) {
+    echo $msgErrors['size'];
+    $nberror++;
   } else {
-    move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $pathImg . $_FILES["fileToUpload"]["name"]);
-    echo "Le fichier " . basename($_FILES["fileToUpload"]["name"]) . " a été uploadé.";
+    $extension = mime_content_type($_FILES['fileToUpload']['name'])[1];
+    $newNameImg = $pathImg . uniqid().$extension;
+    move_uploaded_file($_FILES["fileToUpload"]["tmp_name"],$newNameImg);
+    echo "Le fichier " .uniqid().$extension . " a été uploadé.";
   }
 }
 ?>
