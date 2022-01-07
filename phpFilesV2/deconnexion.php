@@ -1,6 +1,9 @@
 <?php
 setcookie('myLogin','',time()-3600);
 setcookie('myPassword','',time()-3600);
+setcookie('PHPSESSID','',time()-3600);
+setcookie('myQuota','',time()-3600);
+setcookie('myFormule','',time()-3600);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

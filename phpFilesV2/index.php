@@ -1,5 +1,4 @@
 <?php
-var_dump ($_COOKIE);
 if (session_status() == PHP_SESSION_NONE) session_start();
 require "./controller/controlIndex.php";
 ?>
@@ -31,5 +30,4 @@ require "./controller/controlIndex.php";
     </form>
   </div>
 </body>
-
 </html>
