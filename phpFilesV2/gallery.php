@@ -26,7 +26,7 @@ if (session_status() == PHP_SESSION_NONE) session_start();
 			?>
 					<div class="row">
 						<div class="column">
-							<a data-lightbox="roadtrip" <img src="./assets/img/<?= $_COOKIE['myLogin'] ?>/<?= $_SESSION[$fullNameKeySession] ?>" alt="Images"> </a>s
+							<a href="./assets/img/<?= $_COOKIE['myLogin'] ?>/<?= $_SESSION[$fullNameKeySession] ?>" data-lightbox="roadtrip">Image #2</a>
 						</div>
 					</div>
 			<?php }
@@ -42,7 +42,7 @@ if (session_status() == PHP_SESSION_NONE) session_start();
 					'wrapAround': true
 				})
 			</script>
-			<script src="./assets/js/lightbox.js"></script>
+			<script src="./assets/js/lightbox-plus-jquery.js"></script>
 </body>
 
 </html>

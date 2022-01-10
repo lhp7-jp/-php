@@ -27,6 +27,9 @@ require "./controller/controlIndex.php";
       <input value="<?= isset($_POST['passWord']) ? htmlspecialchars($_POST["passWord"]) : "" ?>" name="passWord" type="password" placeholder="" /><br />
       <h1></h1>
       <button onclick="window.location.href='index.php';">Connexion</button>
+      <h1></h1>
+      <label for="checkbox">Se souvenir de moi</label>
+      <input value"1" id="checkbox" name="remenberMe" type="checkbox" placeholder="" />
     </form>
   </div>
 </body>
